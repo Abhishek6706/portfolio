@@ -206,6 +206,10 @@
       margin: 0 0 34px;
     }
 
+    .lede+.lede {
+      margin-top: -18px;
+    }
+
     .lede strong {
       color: var(--text);
       font-weight: 500;
@@ -557,6 +561,32 @@
 
     .role li::marker {
       color: var(--line-bright);
+    }
+
+    .role-projects {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-faint);
+      margin: -6px 0 0;
+    }
+
+    .role-projects span {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-right: 8px;
+    }
+
+    .role-projects a {
+      color: var(--text-dim);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--line-bright);
+      transition: color .18s ease, border-color .18s ease;
+    }
+
+    .role-projects a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
     }
 
     .sub-proj {
@@ -1281,92 +1311,63 @@
       <h1>I turn unstructured mess into <em>answers you can trust</em>.</h1>
       <p class="lede">
         I'm a <strong>Software Engineer at Kellton Tech Solutions</strong> with an <strong>M.Tech in Artificial
-          Intelligence from IIIT Bhopal</strong>. Right now I'm building a delivery-time estimation system from three
-        sequential XGBoost models served behind FastAPI. Before that I shipped an AI observability platform that
-        traces failures back to their root cause with hybrid retrieval, cross-encoder reranking and an LLM, scoring
-        95% groundedness on the RAG Triad. I also built a multivariate cost estimator and a lightweight CNN that
-        classifies Alzheimer's stages from MRI scans. What I care about is whether these systems can be trusted in
-        practice: retrieval quality, evaluation that holds up, and models that generalise.
+          Intelligence from IIIT Bhopal</strong>. My work focuses on building practical AI/ML systems, from predictive
+        modelling to LLM-powered applications. Currently, I'm developing a delivery-time estimation system using three
+        sequential XGBoost models, deployed through FastAPI.
+      </p>
+      <p class="lede">
+        Previously, I built an AI-powered observability platform that identifies root causes of application failures
+        using hybrid retrieval, cross-encoder reranking, and LLMs, achieving 95% groundedness in RAG evaluation. My
+        experience also includes developing a multivariate cost estimation system and a lightweight CNN for
+        Alzheimer's disease classification using MRI scans. Across these projects, my focus remains on building
+        reliable AI systems, with particular emphasis on retrieval quality, rigorous evaluation, and model
+        generalisation.
       </p>
       <div class="cta-row">
-        <a class="btn primary" href="#work">Selected work →</a>
+        <a class="btn primary" href="#work">Project highlights →</a>
         <a class="btn" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
         <a class="btn" href="mailto:abhishek.gupta6706@gmail.com">Get in touch</a>
-      </div>
-      <p class="parse-caption">// recently shipped</p>
-      <p class="parse-sub">Unstructured logs into structured records, then retrieval and an LLM on top - root cause explained, with the evidence attached.</p>
-      <!-- signature element -->
-      <div class="parse">
-        <div class="parse-head">
-          <span class="tl"><i></i><i></i><i></i></span>
-          ai-ops · root cause analysis
-        </div>
-        <div class="parse-body">
-          <div class="stage">
-            <div class="stage-label"><b>01</b> raw</div>
-            <div class="rawlog">2026-08-29T14:22:07.331Z ERROR payment-svc ConnectionPoolTimeout: acquire timeout after
-              30000ms at Pool.acquire (pool.js:118)</div>
-          </div>
-          <div class="stage">
-            <div class="stage-label"><b>02</b> structured</div>
-            <div class="fields">
-              <span class="field"><b>timestamp</b> 2026-08-29T14:22:07Z</span>
-              <span class="field lvl-err"><b>level</b> ERROR</span>
-              <span class="field"><b>service</b> payment-svc</span>
-              <span class="field"><b>error</b> ConnectionPoolTimeout</span>
-              <span class="field"><b>threshold</b> 30000ms</span>
-            </div>
-          </div>
-          <div class="stage">
-            <div class="stage-label"><b>03</b> explained</div>
-            <div class="explain">
-              Payment service exhausted its database connection pool. Hybrid retrieval surfaced 14 related entries
-              across
-              <span>payment-svc</span> and <span>order-svc</span> - connection acquisition times climbed steadily for
-              six minutes before the first timeout, pointing to leaked connections rather than a traffic spike.
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
     <!-- ── NOW ──────────────────────────────── -->
     <section id="now">
-      <div class="eyebrow"><span class="idx">[01]</span> <span class="lvl">INFO</span> currently</div>
+      <div class="eyebrow"><span class="idx">[01]</span> currently</div>
       <h2>// what I'm on right now</h2>
       <div class="now-grid">
         <div class="now-cell">
           <h3>building</h3>
-          <p>A delivery-time estimation system: three XGBoost models predict each leg of a delivery, their outputs
+          <p>A delivery-time estimation system: three XGBoost models predict each component of a delivery, their outputs
             add up to the final ETA, and FastAPI serves the result.</p>
         </div>
         <div class="now-cell">
           <h3>just shipped</h3>
-          <p>An AI observability platform that reads production logs and explains root causes. It scores 95%
-            groundedness on the RAG Triad. Also just finished: my M.Tech in AI at IIIT Bhopal.</p>
+          <p>An AI observability platform that reads production logs and explains root causes. It scores 92% context relevalnce, 95%
+            groundedness, and 92% answer relevance on the RAG Triad.</p>
         </div>
         <div class="now-cell">
           <h3>learning</h3>
-          <p>How to evaluate LLM systems and keep them reliable in production. Agentic architectures with LangGraph,
-            and tool-calling flows that go further than plain RAG.</p>
+          <p>Taking models from notebook to production: packaging services with Docker, streaming events through
+            Apache Kafka.</p>
         </div>
         <div class="now-cell">
           <h3>looking for</h3>
-          <p>A team where the AI has to hold up under real traffic and someone is depending on the answer being right.
-            I'd rather own one hard system deeply than ship a dozen demos.</p>
+          <p>A team where I can keep sharpening my skill set and fine-tune what I've learned on real production
+            problems, working alongside engineers who set a high bar and where the AI has to hold up under real
+            traffic.</p>
         </div>
       </div>
     </section>
 
     <!-- ── WORK ─────────────────────────────── -->
     <section id="work">
-      <div class="eyebrow"><span class="idx">[02]</span> <span class="lvl">INFO</span> selected work</div>
-      <h2>// what I've shipped <i>- watch each pipeline run, expand a card for the details</i></h2>
+      <div class="eyebrow"><span class="idx">[02]</span> project highlights</div>
+      <h2>// what I've shipped, expand a card for the details</i></h2>
 
       <div class="projects">
 
         <!-- 01 -->
-        <details class="proj">
+        <details class="proj" id="proj-delivery">
           <summary>
             <div class="proj-top">
               <span class="proj-num">01</span>
@@ -1376,7 +1377,7 @@
             </div>
             <p class="proj-desc">
               A promised delivery time is only useful if it holds. This system breaks each delivery into three
-              sequential legs and predicts each one with its own XGBoost model. The three predictions are added up into
+              sequential components and predicts each one with its own XGBoost model. The three predictions are added up into
               the final estimate and served over a REST API. The first baseline delivers 73% of orders within the
               promised window.
             </p>
@@ -1384,7 +1385,7 @@
               <div class="flow-track">
                 <div class="flow-node"><b>01</b><strong>PostgreSQL</strong><small>SQLAlchemy ORM</small></div>
                 <div class="flow-node"><b>02</b><strong>EDA</strong><small>predictive features</small></div>
-                <div class="flow-node"><b>03</b><strong>3× XGBoost</strong><small>sequential legs</small></div>
+                <div class="flow-node"><b>03</b><strong>3× XGBoost</strong><small>sequential components</small></div>
                 <div class="flow-node"><b>04</b><strong>GridSearchCV</strong><small>hyperparameters</small></div>
                 <div class="flow-node"><b>05</b><strong>Aggregate</strong><small>sum → final ETA</small></div>
                 <div class="flow-node"><b>06</b><strong>FastAPI</strong><small>REST predictions</small></div>
@@ -1413,7 +1414,7 @@
               <li>
                 <h5>Three sequential components</h5>
                 <p>A single end-to-end regressor would blur very different stages together. Instead, delivery time is
-                  split into three legs that happen one after another, and each leg gets its own multivariate XGBoost
+                  split into three components that happen one after another, and each component gets its own multivariate XGBoost
                   model. That way each model learns what actually drives its stage.</p>
                 <div class="libs"><b>›</b> XGBoost · Scikit-learn</div>
               </li>
@@ -1426,7 +1427,7 @@
               <li>
                 <h5>Aggregation into the final estimate</h5>
                 <p>The three predictions are added together to give the delivery time shown to the customer. Because
-                  the estimate is a sum, you can see which leg contributes the most delay.</p>
+                  the estimate is a sum, you can see which component contributes the most delay.</p>
                 <div class="libs"><b>›</b> Pandas · NumPy</div>
               </li>
               <li>
@@ -1434,14 +1435,14 @@
                 <p>Predictions are served through FastAPI endpoints. The success metric is compliance: the share of
                   orders that actually arrive within the promised timeframe. The baseline sits at 73%, and the work
                   now is pushing that number up.</p>
-                <div class="libs"><b>›</b> FastAPI · Pydantic · <a href="/gifs/delivery-time.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
+                <div class="libs"><b>›</b> FastAPI · Pydantic</div>
               </li>
             </ol>
           </div>
         </details>
 
         <!-- 02 -->
-        <details class="proj">
+        <details class="proj" id="proj-observability">
           <summary>
             <div class="proj-top">
               <span class="proj-num">02</span>
@@ -1453,7 +1454,8 @@
               After an incident, engineers used to spend hours digging through logs. This platform reads the logs for
               them. It standardises unstructured logs, stores their embeddings in ChromaDB, runs hybrid retrieval, and
               reranks the hits with a cross-encoder. An LLM then explains the root cause, citing the log entries behind
-              it.
+              it. Evaluated with the RAG Triad, the chatbot scores 92% context relevance, 95% groundedness, and 92%
+              answer relevance.
             </p>
             <div class="flow" data-metric="92 / 95 / 92" data-metric-label="RAG Triad · context · groundedness · answer">
               <div class="flow-track">
@@ -1512,14 +1514,14 @@
                 <p>The chatbot was scored on all three RAG Triad axes: 92% context relevance, 95% groundedness, and
                   92% answer relevance. These scores cover whether the right evidence was retrieved, whether the answer
                   sticks to that evidence, and whether it answers the question that was asked.</p>
-                <div class="libs"><b>›</b> RAG Triad evaluation · <a href="/gifs/observability.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
+                <div class="libs"><b>›</b> RAG Triad evaluation</div>
               </li>
             </ol>
           </div>
         </details>
 
         <!-- 03 -->
-        <details class="proj">
+        <details class="proj" id="proj-utility">
           <summary>
             <div class="proj-top">
               <span class="proj-num">03</span>
@@ -1580,14 +1582,14 @@
                 <h5>Evaluation</h5>
                 <p>Held-out R² of 0.75 for material, 0.77 for internal labour, 0.78 for external labour, and 0.78 for
                   other costs. The model explains more than three quarters of the variance in every component.</p>
-                <div class="libs"><b>›</b> Scikit-learn · Matplotlib · <a href="/gifs/utility-cost.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
+                <div class="libs"><b>›</b> Scikit-learn · Matplotlib</div>
               </li>
             </ol>
           </div>
         </details>
 
         <!-- 04 -->
-        <details class="proj">
+        <details class="proj" id="proj-survey">
           <summary>
             <div class="proj-top">
               <span class="proj-num">04</span>
@@ -1647,14 +1649,14 @@
                 <h5>REST API layer</h5>
                 <p>Both the heatmap analytics and the video pulse analytics are exposed as FastAPI endpoints for the
                   product front end to consume.</p>
-                <div class="libs"><b>›</b> FastAPI · Pydantic · Uvicorn · <a href="/gifs/survey-intelligence.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
+                <div class="libs"><b>›</b> FastAPI · Pydantic · Uvicorn</div>
               </li>
             </ol>
           </div>
         </details>
 
         <!-- 05 -->
-        <details class="proj">
+        <details class="proj" id="proj-alzheimers">
           <summary>
             <div class="proj-top">
               <span class="proj-num">05</span>
@@ -1784,7 +1786,7 @@
                   slices, datasets beyond Mendeley, and an actual clinical deployment to find out what latency and
                   memory really cost.</p>
                   <div class="libs"><b>›</b> <a href="https://github.com/Abhishek6706/Alzheimers_Disease_Prediction"
-      target="_blank" rel="noopener noreferrer">repository ↗</a> · <a href="/gifs/alzheimers-cnn.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
+      target="_blank" rel="noopener noreferrer">repository ↗</a></div>
               </li>
             </ol>
           </div>
@@ -1795,7 +1797,7 @@
 
     <!-- ── EXPERIENCE ───────────────────────── -->
     <section id="experience">
-      <div class="eyebrow"><span class="idx">[03]</span> <span class="lvl">INFO</span> experience</div>
+      <div class="eyebrow"><span class="idx">[03]</span> experience</div>
       <h2>// where I've been</h2>
 
       <div class="role">
@@ -1804,47 +1806,12 @@
           <span class="role-org">Kellton Tech Solutions</span>
           <span class="role-dates">May 2026 - present</span>
         </div>
-        <p class="role-sub">full-time · Generative AI &amp; ML</p>
-
-        <div class="sub-proj">
-          <h4>ML-Based Delivery Time Estimation <span style="color:var(--text-faint);font-weight:400;">· Aug 2026 -
-              present</span></h4>
-          <ul>
-            <li>Streamlined delivery data retrieval from PostgreSQL using SQLAlchemy ORM, and identified predictive
-              features through EDA.</li>
-            <li>Developed multivariate XGBoost models that predict three sequential delivery-time components, then
-              add them up into the final delivery-time estimate.</li>
-            <li>Tuned the XGBoost hyperparameters with GridSearchCV to improve the delivery-time estimates.</li>
-            <li>Reached a baseline delivery compliance rate of 73% (orders delivered within the promised timeframe),
-              with predictions served through FastAPI.</li>
-          </ul>
-        </div>
-
-        <div class="sub-proj">
-          <h4>AI-Powered Observability Platform <span style="color:var(--text-faint);font-weight:400;">· Jun 2026 -
-              Aug 2026</span></h4>
-          <ul>
-            <li>Built a preprocessing pipeline that standardises unstructured application logs for analysis.</li>
-            <li>Stored log embeddings in ChromaDB and implemented hybrid search with a cosine similarity threshold of
-              0.5, so logs are retrieved by relevance.</li>
-            <li>Reranked retrieved documents with cross-encoder/ms-marco-MiniLM-L-6-v2 before LLM root-cause
-              generation, to put the most relevant context first.</li>
-            <li>Evaluated the chatbot with the RAG Triad: 92% context relevance, 95% groundedness, and 92% answer
-              relevance.</li>
-          </ul>
-        </div>
-
-        <div class="sub-proj">
-          <h4>ML-Based Utility Cost Estimation <span style="color:var(--text-faint);font-weight:400;">· May 2026 - Jun
-              2026</span></h4>
-          <ul>
-            <li>Identified the key cost drivers through EDA to align input features with the cost prediction
-              objectives.</li>
-            <li>Engineered features, encoded categorical variables, and tuned XGBoost hyperparameters with Optuna.</li>
-            <li>Developed a multivariate XGBoost model that predicts four cost components at once. R² scores: 0.75
-              (material), 0.77 (internal labour), 0.78 (external labour), and 0.78 (other).</li>
-          </ul>
-        </div>
+        <p class="role-sub">full-time · Generative AI &amp; Machine Learning</p>
+        <p class="role-projects"><span>projects</span>
+          <a href="#proj-delivery">Delivery Time Estimation</a> ·
+          <a href="#proj-observability">Observability Platform</a> ·
+          <a href="#proj-utility">Utility Cost Estimation</a>
+        </p>
       </div>
 
       <div class="role">
@@ -1853,16 +1820,10 @@
           <span class="role-org">Kellton Tech Solutions</span>
           <span class="role-dates">Oct 2025 - Apr 2026</span>
         </div>
-        <p class="role-sub">Survey Intelligence Platform · Nov 2025 - Mar 2026</p>
-        <ul>
-          <li>Streamlined access to survey data by integrating MongoDB with Beanie ODM for response retrieval and
-            processing.</li>
-          <li>Visualised survey click intensity by generating OpenCV heatmap images and storing them in Azure Blob.
-          </li>
-          <li>Summarised audience reactions to videos by aggregating ratings at each reaction timestamp and plotting
-            them as a line graph.</li>
-          <li>Exposed the heatmap and video pulse analytics through REST APIs built with FastAPI.</li>
-        </ul>
+        <p class="role-sub">AI &amp; Data Analytics</p>
+        <p class="role-projects"><span>projects</span>
+          <a href="#proj-survey">Survey Intelligence Platform</a>
+        </p>
       </div>
 
       <div class="role">
@@ -1872,6 +1833,9 @@
           <span class="role-dates">2024 - 2026</span>
         </div>
         <p class="role-sub">CGPA 9.29</p>
+        <p class="role-projects"><span>dissertation</span>
+          <a href="#proj-alzheimers">Lightweight CNN for Alzheimer's Classification</a>
+        </p>
       </div>
 
       <div class="role">
@@ -1886,13 +1850,13 @@
 
     <!-- ── STACK ────────────────────────────── -->
     <section id="stack">
-      <div class="eyebrow"><span class="idx">[04]</span> <span class="lvl">DEBUG</span> stack</div>
+      <div class="eyebrow"><span class="idx">[04]</span> stack</div>
       <h2>// what I build with</h2>
 
       <div class="stack-row">
         <div class="stack-key">languages</div>
         <div class="tags">
-          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">REST APIs</span>
+          <span class="tag">Python</span><span class="tag">SQL</span>
         </div>
       </div>
       <div class="stack-row">
@@ -1937,7 +1901,7 @@
       <div class="stack-row">
         <div class="stack-key">backend &amp; data</div>
         <div class="tags">
-          <span class="tag">FastAPI</span><span class="tag">Pydantic</span><span class="tag">PostgreSQL</span>
+          <span class="tag">REST APIs</span><span class="tag">FastAPI</span><span class="tag">Pydantic</span><span class="tag">PostgreSQL</span>
           <span class="tag">SQLAlchemy</span><span class="tag">MongoDB</span><span class="tag">Beanie ODM</span>
           <span class="tag">ChromaDB</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
           <span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
@@ -1963,7 +1927,7 @@
 
     <!-- ── RESEARCH ─────────────────────────── -->
     <section id="research">
-      <div class="eyebrow"><span class="idx">[05]</span> <span class="lvl">INFO</span> research &amp; credentials</div>
+      <div class="eyebrow"><span class="idx">[05]</span> research &amp; credentials</div>
       <h2>// the paper trail</h2>
       <div class="two-col">
         <div>
@@ -1975,8 +1939,8 @@
                 accuracy</span>
             </li>
             <li>
-              Secure Hardware IP Design Framework for Ownership Protection of IP Vendors and SoC Integrators
-              <span class="meta">hardware security · from the electronics years</span>
+              MITRA: Trust-Aware Hardware IP Design Framework with Mutual IP Protection of Vendor and Buyers during High-Level Synthesis
+              <span class="meta">Hardware security </span>
             </li>
           </ul>
         </div>
@@ -2006,7 +1970,7 @@
 
     <!-- ── CONTACT ──────────────────────────── -->
     <section id="contact" class="contact">
-      <div class="eyebrow"><span class="idx">[06]</span> <span class="lvl">INFO</span> contact</div>
+      <div class="eyebrow"><span class="idx">[06]</span> contact</div>
       <h2>// say hi →</h2>
       <a class="mail" href="mailto:abhishek.gupta6706@gmail.com">abhishek.gupta6706@gmail.com</a>
       <div class="socials">
@@ -2017,12 +1981,6 @@
       </div>
     </section>
 
-    <footer>
-      <span>IBM Plex Mono · Inter</span>
-      <span>New Delhi, India · IST</span>
-      <span>© 2026 Abhishek Gupta</span>
-    </footer>
-
   </main>
 
   <!-- ── command palette ─────────────────────── -->
@@ -2030,7 +1988,7 @@
     <div class="pal" role="dialog" aria-modal="true" aria-label="Command palette">
       <input id="palInput" type="text" placeholder="Jump to…" autocomplete="off" />
       <ul id="palList">
-        <li><a href="#work">Selected work <span class="k">section</span></a></li>
+        <li><a href="#work">Project highlights <span class="k">section</span></a></li>
         <li><a href="#experience">Experience <span class="k">section</span></a></li>
         <li><a href="#stack">Stack <span class="k">section</span></a></li>
         <li><a href="#research">Research &amp; credentials <span class="k">section</span></a></li>
@@ -2100,6 +2058,14 @@
       });
 
       list.addEventListener('click', close);
+
+      // experience → open the linked project card
+      Array.prototype.forEach.call(document.querySelectorAll('.role-projects a'), function (a) {
+        a.addEventListener('click', function () {
+          var card = document.querySelector(a.getAttribute('href'));
+          if (card) card.open = true;
+        });
+      });
 
       // animated project pipelines
       var STEP_MS = 700, HOLD_MS = 1800;

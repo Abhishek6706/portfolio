@@ -32,7 +32,7 @@ PROJECTS = [
         "stages": [
             ("PostgreSQL", "SQLAlchemy ORM"),
             ("EDA", "predictive features"),
-            ("3x XGBoost", "sequential legs"),
+            ("3x XGBoost", "sequential stages"),
             ("GridSearchCV", "hyperparameters"),
             ("Aggregate", "sum → final ETA"),
             ("FastAPI", "REST predictions"),
