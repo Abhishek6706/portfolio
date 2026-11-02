@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Abhishek Gupta · AI Engineer</title>
   <meta name="description"
-    content="AI Engineer building LLM and RAG systems end-to-end: observability platforms, analytics pipelines, and production ML. Software Engineer at Kellton Tech Solutions." />
+    content="AI Engineer building LLM, RAG, and production ML systems end-to-end: delivery-time estimation, AI observability, cost prediction, and survey analytics. Software Engineer at Kellton Tech Solutions." />
   <meta property="og:title" content="Abhishek Gupta · AI Engineer" />
   <meta property="og:description"
-    content="AI Engineer building LLM and RAG systems end-to-end: observability platforms, analytics pipelines, and production ML." />
+    content="AI Engineer building LLM, RAG, and production ML systems end-to-end: delivery-time estimation, AI observability, and cost prediction." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://portfolio.abhishek-gupta6706.workers.dev/og.png" />
   <meta property="og:url" content="https://portfolio.abhishek-gupta6706.workers.dev/" />
@@ -774,6 +774,172 @@
       font-weight: 500;
     }
 
+    .libs a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .libs a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── animated pipeline ───────────────────── */
+    .flow {
+      margin: 18px 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: var(--bg);
+      padding: 14px 14px 12px;
+    }
+
+    .flow-track {
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      padding-bottom: 2px;
+    }
+
+    .flow-node {
+      flex: 1 0 118px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 8px 10px 9px;
+      background: var(--bg);
+      transition: border-color .3s ease, background .3s ease, box-shadow .3s ease;
+    }
+
+    .flow-node b {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--line-bright);
+      margin-bottom: 3px;
+      transition: color .3s ease;
+    }
+
+    .flow-node strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-faint);
+      white-space: nowrap;
+      transition: color .3s ease;
+    }
+
+    .flow-node small {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--line-bright);
+      white-space: nowrap;
+      transition: color .3s ease;
+    }
+
+    .flow-node.is-done {
+      border-color: var(--accent-dim);
+      background: var(--surface-2);
+    }
+
+    .flow-node.is-active {
+      border-color: var(--accent);
+      background: var(--surface-2);
+      box-shadow: 0 0 0 3px rgba(111, 216, 230, .14);
+    }
+
+    .flow-node.is-done strong,
+    .flow-node.is-active strong {
+      color: var(--text);
+    }
+
+    .flow-node.is-done small,
+    .flow-node.is-active small {
+      color: var(--text-dim);
+    }
+
+    .flow-node.is-done b {
+      color: var(--accent-dim);
+    }
+
+    .flow-node.is-active b {
+      color: var(--accent);
+    }
+
+    .flow-link {
+      flex: 0 0 22px;
+      align-self: center;
+      height: 2px;
+      background: var(--line-bright);
+      position: relative;
+      transition: background .3s ease;
+    }
+
+    .flow-link.is-done {
+      background: var(--accent-dim);
+    }
+
+    .flow-link::after {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+    }
+
+    .flow-link.is-moving::after {
+      animation: packet var(--step, .7s) linear forwards;
+    }
+
+    @keyframes packet {
+      0% {
+        opacity: 1;
+        transform: translateX(-4px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(18px);
+      }
+    }
+
+    .flow-foot {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 11px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--text-faint);
+    }
+
+    .flow-bar {
+      flex: 0 0 90px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .flow-bar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      transition: width .3s ease;
+    }
+
+    .flow-status em {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
     /* ── stack ───────────────────────────────── */
     .stack-row {
       display: grid;
@@ -819,6 +985,15 @@
 
     .list-plain li:last-child {
       border-bottom: none;
+    }
+
+    .list-plain li a {
+      text-decoration: none;
+      transition: color .18s ease;
+    }
+
+    .list-plain li a:hover {
+      color: var(--accent);
     }
 
     .list-plain .meta {
@@ -1008,6 +1183,58 @@
       .clock {
         display: none;
       }
+
+      .flow-track {
+        flex-direction: column;
+        overflow: visible;
+      }
+
+      .flow-node {
+        flex: none;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 2px 9px;
+        padding: 6px 10px;
+      }
+
+      .flow-node b {
+        margin: 0;
+      }
+
+      .flow-node strong,
+      .flow-node small {
+        white-space: normal;
+      }
+
+      .flow-link {
+        flex: 0 0 14px;
+        width: 2px;
+        height: auto;
+        margin-left: 18px;
+        align-self: flex-start;
+      }
+
+      .flow-link::after {
+        left: -3px;
+        top: 0;
+      }
+
+      .flow-link.is-moving::after {
+        animation-name: packet-down;
+      }
+
+      @keyframes packet-down {
+        0% {
+          opacity: 1;
+          transform: translateY(-4px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: translateY(10px);
+        }
+      }
     }
 
     @media (prefers-reduced-motion:reduce) {
@@ -1054,20 +1281,19 @@
       <h1>I turn unstructured mess into <em>answers you can trust</em>.</h1>
       <p class="lede">
         I'm a <strong>Software Engineer at Kellton Tech Solutions</strong> with an <strong>M.Tech in Artificial
-          Intelligence
-          from IIIT Bhopal</strong>. My work centres on taking AI systems into production: an observability platform
-        that
-        traces system failures back to their root cause, an analytics pipeline that turns unstructured survey responses
-        into validated structured insight, and a lightweight CNN that classifies Alzheimer's stages from MRI scans. I
-        focus on what determines whether these systems can be trusted in practice - retrieval quality, schema
-        validation, and honest evaluation.
+          Intelligence from IIIT Bhopal</strong>. Right now I'm building a delivery-time estimation system from three
+        sequential XGBoost models served behind FastAPI. Before that I shipped an AI observability platform that
+        traces failures back to their root cause with hybrid retrieval, cross-encoder reranking and an LLM, scoring
+        95% groundedness on the RAG Triad. I also built a multivariate cost estimator and a lightweight CNN that
+        classifies Alzheimer's stages from MRI scans. What I care about is whether these systems can be trusted in
+        practice: retrieval quality, evaluation that holds up, and models that generalise.
       </p>
       <div class="cta-row">
         <a class="btn primary" href="#work">Selected work →</a>
         <a class="btn" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a>
         <a class="btn" href="mailto:abhishek.gupta6706@gmail.com">Get in touch</a>
       </div>
-      <p class="parse-caption">// currently working</p>
+      <p class="parse-caption">// recently shipped</p>
       <p class="parse-sub">Unstructured logs into structured records, then retrieval and an LLM on top - root cause explained, with the evidence attached.</p>
       <!-- signature element -->
       <div class="parse">
@@ -1111,18 +1337,18 @@
       <div class="now-grid">
         <div class="now-cell">
           <h3>building</h3>
-          <p>An AI observability platform that reads production logs and explains why systems broke - in English, with
-            the evidence attached.</p>
+          <p>A delivery-time estimation system: three XGBoost models predict each leg of a delivery, their outputs
+            add up to the final ETA, and FastAPI serves the result.</p>
         </div>
         <div class="now-cell">
-          <h3>just finished</h3>
-          <p>My M.Tech in AI at IIIT Bhopal. The dissertation solved the cross-dataset generalisation problem that most
-            Alzheimer's classification papers skip entirely.</p>
+          <h3>just shipped</h3>
+          <p>An AI observability platform that reads production logs and explains root causes. It scores 95%
+            groundedness on the RAG Triad. Also just finished: my M.Tech in AI at IIIT Bhopal.</p>
         </div>
         <div class="now-cell">
           <h3>learning</h3>
-          <p>Evaluation and reliability of LLM systems in production. Agentic architectures and tool-calling flows
-            beyond simple RAG.</p>
+          <p>How to evaluate LLM systems and keep them reliable in production. Agentic architectures with LangGraph,
+            and tool-calling flows that go further than plain RAG.</p>
         </div>
         <div class="now-cell">
           <h3>looking for</h3>
@@ -1135,7 +1361,7 @@
     <!-- ── WORK ─────────────────────────────── -->
     <section id="work">
       <div class="eyebrow"><span class="idx">[02]</span> <span class="lvl">INFO</span> selected work</div>
-      <h2>// what I've shipped <i>- expand any card for the full pipeline</i></h2>
+      <h2>// what I've shipped <i>- watch each pipeline run, expand a card for the details</i></h2>
 
       <div class="projects">
 
@@ -1144,67 +1370,71 @@
           <summary>
             <div class="proj-top">
               <span class="proj-num">01</span>
-              <span class="proj-name">AI-Ops Observability Platform</span>
-              <span class="chip prod">in production</span>
+              <span class="proj-name">ML-Based Delivery Time Estimation</span>
+              <span class="chip prod">in progress</span>
               <span class="expand"><span></span></span>
             </div>
             <p class="proj-desc">
-              Engineers used to spend hours digging through logs after an incident. This platform reads them instead -
-              parsing unstructured logs into records, embedding them, and using hybrid retrieval plus an LLM to explain
-              the root cause with the supporting evidence cited.
+              A promised delivery time is only useful if it holds. This system breaks each delivery into three
+              sequential legs and predicts each one with its own XGBoost model. The three predictions are added up into
+              the final estimate and served over a REST API. The first baseline delivers 73% of orders within the
+              promised window.
             </p>
+            <div class="flow" data-metric="73%" data-metric-label="baseline delivery compliance">
+              <div class="flow-track">
+                <div class="flow-node"><b>01</b><strong>PostgreSQL</strong><small>SQLAlchemy ORM</small></div>
+                <div class="flow-node"><b>02</b><strong>EDA</strong><small>predictive features</small></div>
+                <div class="flow-node"><b>03</b><strong>3× XGBoost</strong><small>sequential legs</small></div>
+                <div class="flow-node"><b>04</b><strong>GridSearchCV</strong><small>hyperparameters</small></div>
+                <div class="flow-node"><b>05</b><strong>Aggregate</strong><small>sum → final ETA</small></div>
+                <div class="flow-node"><b>06</b><strong>FastAPI</strong><small>REST predictions</small></div>
+              </div>
+            </div>
             <div class="tags">
-              <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">Azure OpenAI</span>
-              <span class="tag">Vector DB</span><span class="tag">FastAPI</span><span class="tag">RAG</span><span
-                class="tag">Regex</span>
+              <span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span><span class="tag">XGBoost</span>
+              <span class="tag">GridSearchCV</span><span class="tag">Pandas</span><span class="tag">EDA</span><span
+                class="tag">FastAPI</span>
             </div>
           </summary>
           <div class="proj-body">
             <ol class="steps">
               <li>
-                <h5>Log collection &amp; format study</h5>
-                <p>Started with raw application and infrastructure logs - mixed formats, multi-line stack traces,
-                  inconsistent severity conventions across services. Studied the patterns before writing a single
-                  parser.</p>
-                <div class="libs"><b>›</b> Python · re</div>
+                <h5>Data retrieval from PostgreSQL</h5>
+                <p>Order and delivery history lives in PostgreSQL. I query it through SQLAlchemy ORM models instead of
+                  hand-written SQL, so the same pipeline can pull training data and serve inference.</p>
+                <div class="libs"><b>›</b> PostgreSQL · SQLAlchemy ORM · Pandas</div>
               </li>
               <li>
-                <h5>Structuring pipeline</h5>
-                <p>Automated parsing of every line into timestamp, level, service, and message. Multi-line stack traces
-                  get grouped into single coherent records rather than fragmenting across rows.</p>
-                <div class="libs"><b>›</b> Python · Regex · Pandas</div>
+                <h5>Exploratory data analysis</h5>
+                <p>I used EDA to find which order, location, and timing attributes actually move delivery time. Those
+                  findings decided the feature set before any model was trained.</p>
+                <div class="libs"><b>›</b> Pandas · Matplotlib / Seaborn · NumPy</div>
               </li>
               <li>
-                <h5>Vector embeddings</h5>
-                <p>Each structured entry becomes an embedding, so logs describing similar failures sit near each other
-                  in vector space even when the wording differs completely.</p>
-                <div class="libs"><b>›</b> Azure OpenAI · Hugging Face · LangChain</div>
+                <h5>Three sequential components</h5>
+                <p>A single end-to-end regressor would blur very different stages together. Instead, delivery time is
+                  split into three legs that happen one after another, and each leg gets its own multivariate XGBoost
+                  model. That way each model learns what actually drives its stage.</p>
+                <div class="libs"><b>›</b> XGBoost · Scikit-learn</div>
               </li>
               <li>
-                <h5>Vector store with metadata</h5>
-                <p>Embeddings stored alongside service name, severity, and timestamp, organised into collections - a
-                  searchable semantic memory of everything that has gone wrong.</p>
-                <div class="libs"><b>›</b> ChromaDB / Qdrant · LangChain</div>
+                <h5>Hyperparameter tuning</h5>
+                <p>Each component's model is tuned with GridSearchCV under cross-validation, so the chosen settings hold
+                  up on data the model hasn't seen.</p>
+                <div class="libs"><b>›</b> GridSearchCV · Scikit-learn · XGBoost</div>
               </li>
               <li>
-                <h5>Hybrid retrieval</h5>
-                <p>Semantic search alone blurs exact tokens like error codes and service names; keyword search alone
-                  misses paraphrased questions. Running both and merging the ranked results fixed the failure mode on
-                  either side.</p>
-                <div class="libs"><b>›</b> LangChain retrievers · vector similarity · custom ranking</div>
+                <h5>Aggregation into the final estimate</h5>
+                <p>The three predictions are added together to give the delivery time shown to the customer. Because
+                  the estimate is a sum, you can see which leg contributes the most delay.</p>
+                <div class="libs"><b>›</b> Pandas · NumPy</div>
               </li>
               <li>
-                <h5>Root-cause generation</h5>
-                <p>Retrieved context is injected into an engineered prompt. The LLM reads the evidence and produces a
-                  human-readable explanation grounded in actual log entries - traceable, not invented.</p>
-                <div class="libs"><b>›</b> Azure OpenAI · LangChain RAG chain</div>
-              </li>
-              <li>
-                <h5>Chatbot &amp; API layer</h5>
-                <p>Engineers query their logs in plain English through a conversational interface, with the whole
-                  pipeline served behind REST endpoints. Next phase: predictive analytics that flag failures before they
-                  land.</p>
-                <div class="libs"><b>›</b> FastAPI · LangChain memory · Pydantic</div>
+                <h5>Serving &amp; compliance baseline</h5>
+                <p>Predictions are served through FastAPI endpoints. The success metric is compliance: the share of
+                  orders that actually arrive within the promised timeframe. The baseline sits at 73%, and the work
+                  now is pushing that number up.</p>
+                <div class="libs"><b>›</b> FastAPI · Pydantic · <a href="/gifs/delivery-time.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
               </li>
             </ol>
           </div>
@@ -1215,80 +1445,74 @@
           <summary>
             <div class="proj-top">
               <span class="proj-num">02</span>
-              <span class="proj-name">Survey Analytics Platform</span>
+              <span class="proj-name">AI-Powered Observability Platform</span>
               <span class="chip live">shipped</span>
               <span class="expand"><span></span></span>
             </div>
             <p class="proj-desc">
-              Raw survey responses rarely speak for themselves. This platform turns them into business insight -
-              regression
-              and correlation across 10+ question types, click heatmaps, second-by-second video rating analysis, and
-              GenAI
-              classification of open-text answers, all served as REST APIs.
+              After an incident, engineers used to spend hours digging through logs. This platform reads the logs for
+              them. It standardises unstructured logs, stores their embeddings in ChromaDB, runs hybrid retrieval, and
+              reranks the hits with a cross-encoder. An LLM then explains the root cause, citing the log entries behind
+              it.
             </p>
+            <div class="flow" data-metric="92 / 95 / 92" data-metric-label="RAG Triad · context · groundedness · answer">
+              <div class="flow-track">
+                <div class="flow-node"><b>01</b><strong>Raw logs</strong><small>unstructured</small></div>
+                <div class="flow-node"><b>02</b><strong>Preprocess</strong><small>standardise</small></div>
+                <div class="flow-node"><b>03</b><strong>ChromaDB</strong><small>embeddings</small></div>
+                <div class="flow-node"><b>04</b><strong>Hybrid search</strong><small>cosine ≥ 0.5</small></div>
+                <div class="flow-node"><b>05</b><strong>Rerank</strong><small>MiniLM cross-enc</small></div>
+                <div class="flow-node"><b>06</b><strong>LLM</strong><small>root cause</small></div>
+              </div>
+            </div>
             <div class="tags">
-              <span class="tag">MongoDB</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span>
-              <span class="tag">OpenCV</span><span class="tag">Azure OpenAI</span><span class="tag">Pydantic</span><span
-                class="tag">FastAPI</span>
+              <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">ChromaDB</span>
+              <span class="tag">Sentence Transformers</span><span class="tag">Cross-encoder</span><span
+                class="tag">Azure OpenAI</span><span class="tag">RAG</span><span class="tag">FastAPI</span>
             </div>
           </summary>
           <div class="proj-body">
             <ol class="steps">
               <li>
-                <h5>Ingestion from MongoDB</h5>
-                <p>Survey responses, image click coordinates, per-second video ratings, and open-text answers all live
-                  in MongoDB. Step one was pulling the right collections into Python.</p>
-                <div class="libs"><b>›</b> PyMongo</div>
+                <h5>Log preprocessing pipeline</h5>
+                <p>Application logs arrive in mixed formats, with multi-line stack traces and severity conventions
+                  that differ from service to service. A preprocessing pipeline standardises every line into
+                  timestamp, level, service, and message, and groups each stack trace into a single record.</p>
+                <div class="libs"><b>›</b> Python · Regex · Pandas</div>
               </li>
               <li>
-                <h5>Transformation pipeline</h5>
-                <p>The documents arrive as nested JSON, unusable for analytics. Built a pipeline that flattens them into
-                  one row per respondent, one column per question - a consistent shape every downstream module can rely
-                  on.</p>
-                <div class="libs"><b>›</b> Pandas · NumPy</div>
+                <h5>Embeddings in ChromaDB</h5>
+                <p>Each structured entry is embedded and stored in ChromaDB along with its service, severity, and
+                  timestamp. Logs that describe similar failures end up close together even when the wording is
+                  completely different.</p>
+                <div class="libs"><b>›</b> Sentence Transformers · ChromaDB · LangChain</div>
               </li>
               <li>
-                <h5>Cleaning</h5>
-                <p>Null handling, dtype correction, duplicate removal, value normalisation. Unglamorous, but every
-                  statistic computed later depends on getting this right.</p>
-                <div class="libs"><b>›</b> Pandas · NumPy</div>
+                <h5>Hybrid search with a relevance floor</h5>
+                <p>Semantic search alone blurs exact tokens like error codes and service names. Keyword search alone
+                  misses paraphrased questions. So the platform runs both and merges the results, and a cosine
+                  similarity threshold of 0.5 drops weak matches before they reach the model.</p>
+                <div class="libs"><b>›</b> ChromaDB · keyword search · LangChain retrievers</div>
               </li>
               <li>
-                <h5>Type-aware encoding</h5>
-                <p>Survey answers are mostly categorical. Encoding strategy varies by question type - label encoding
-                  where order is meaningful, one-hot where it isn't.</p>
-                <div class="libs"><b>›</b> Scikit-learn · Pandas</div>
+                <h5>Cross-encoder reranking</h5>
+                <p>Retrieval casts a wide net. A cross-encoder (<code>ms-marco-MiniLM-L-6-v2</code>) then scores every
+                  query–document pair together and reorders the candidates, so the most relevant evidence lands at the
+                  top of the LLM's context window.</p>
+                <div class="libs"><b>›</b> Sentence Transformers · cross-encoder/ms-marco-MiniLM-L-6-v2</div>
               </li>
               <li>
-                <h5>Regression &amp; correlation module</h5>
-                <p>Users pick input and output questions; the module fits regressions and computes correlation
-                  coefficients across 10+ question types to surface what actually drives the outcome.</p>
-                <div class="libs"><b>›</b> Scikit-learn · SciPy · NumPy</div>
+                <h5>Root-cause generation</h5>
+                <p>The reranked context goes into an engineered prompt. The LLM produces a readable explanation
+                  that points back to the actual log entries, so every claim can be traced.</p>
+                <div class="libs"><b>›</b> Azure OpenAI · LangChain RAG chain · FastAPI</div>
               </li>
               <li>
-                <h5>Click heatmaps</h5>
-                <p>For image questions, aggregates every respondent's click coordinates into a density grid and overlays
-                  it on the original image - hot regions and dead zones become obvious instantly.</p>
-                <div class="libs"><b>›</b> NumPy · OpenCV · Matplotlib / Seaborn</div>
-              </li>
-              <li>
-                <h5>TubePulse video analytics</h5>
-                <p>Respondents rate videos continuously while watching. TubePulse plots the rating for every second of
-                  playback, exposing the exact moments that gained or lost the audience.</p>
-                <div class="libs"><b>›</b> Pandas · NumPy · Matplotlib / Plotly</div>
-              </li>
-              <li>
-                <h5>Semantic classification of open text</h5>
-                <p>Free text can't be encoded like a category - meaning matters. An LLM classifies each response into
-                  four categories, with Pydantic-enforced structured output so downstream analytics always receive valid
-                  JSON.</p>
-                <div class="libs"><b>›</b> Azure OpenAI · prompt engineering · Pydantic</div>
-              </li>
-              <li>
-                <h5>REST API layer</h5>
-                <p>Every module exposed as a production endpoint, with continuous learning as new responses land in
-                  MongoDB - insights reflect current data rather than a stale snapshot.</p>
-                <div class="libs"><b>›</b> FastAPI · Pydantic · Uvicorn</div>
+                <h5>Evaluated with the RAG Triad</h5>
+                <p>The chatbot was scored on all three RAG Triad axes: 92% context relevance, 95% groundedness, and
+                  92% answer relevance. These scores cover whether the right evidence was retrieved, whether the answer
+                  sticks to that evidence, and whether it answers the question that was asked.</p>
+                <div class="libs"><b>›</b> RAG Triad evaluation · <a href="/gifs/observability.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
               </li>
             </ol>
           </div>
@@ -1299,73 +1523,64 @@
           <summary>
             <div class="proj-top">
               <span class="proj-num">03</span>
-              <span class="proj-name">Utility Cost Estimation Engine</span>
+              <span class="proj-name">ML-Based Utility Cost Estimation</span>
               <span class="chip live">shipped</span>
               <span class="expand"><span></span></span>
             </div>
             <p class="proj-desc">
-              Utility companies estimate project costs manually - slowly and inconsistently. This replaces the guesswork
-              with
-              models trained on historical project data, positioned as an integration layer between design inputs and
-              the
-              finance system.
+              Utility companies estimate project costs by hand, which is slow and inconsistent. This replaces the
+              guesswork with a single multivariate XGBoost model trained on historical projects. It predicts all four
+              cost components at once, with R² between 0.75 and 0.78 on each.
             </p>
+            <div class="flow" data-metric="R² 0.75–0.78" data-metric-label="across all four cost components">
+              <div class="flow-track">
+                <div class="flow-node"><b>01</b><strong>Project data</strong><small>historical</small></div>
+                <div class="flow-node"><b>02</b><strong>EDA</strong><small>cost drivers</small></div>
+                <div class="flow-node"><b>03</b><strong>Features</strong><small>engineer + encode</small></div>
+                <div class="flow-node"><b>04</b><strong>Optuna</strong><small>tuning</small></div>
+                <div class="flow-node"><b>05</b><strong>XGBoost</strong><small>multivariate</small></div>
+                <div class="flow-node"><b>06</b><strong>4 outputs</strong><small>costs at once</small></div>
+              </div>
+            </div>
             <div class="tags">
               <span class="tag">XGBoost</span><span class="tag">Optuna</span><span class="tag">Scikit-learn</span>
-              <span class="tag">Pandas</span><span class="tag">EDA</span><span class="tag">FastAPI</span>
+              <span class="tag">Pandas</span><span class="tag">EDA</span><span class="tag">Feature engineering</span>
             </div>
           </summary>
           <div class="proj-body">
             <ol class="steps">
               <li>
-                <h5>Historical data loading</h5>
-                <p>Gathered project attributes paired with their actual costs across four separate cost output
-                  variables.</p>
-                <div class="libs"><b>›</b> Pandas · NumPy</div>
-              </li>
-              <li>
                 <h5>Exploratory data analysis</h5>
-                <p>Distributions, outliers, missing values, and the relationships between attributes and cost. The point
-                  was deciding what actually drives cost before letting a model near the data.</p>
+                <p>Distributions, outliers, missing values, and how project attributes relate to cost. The goal was to
+                  find what actually drives cost, and line the inputs up with the prediction targets, before letting a
+                  model near the data.</p>
                 <div class="libs"><b>›</b> Pandas · Matplotlib / Seaborn · NumPy</div>
               </li>
               <li>
-                <h5>Feature engineering</h5>
-                <p>Derived variables built from EDA insight, missing values handled, and the most predictive attributes
-                  selected separately for each of the four outputs.</p>
-                <div class="libs"><b>›</b> Pandas · NumPy</div>
-              </li>
-              <li>
-                <h5>Categorical encoding</h5>
-                <p>Project attributes converted to numeric form via label encoding so the gradient-boosting model could
-                  consume them.</p>
-                <div class="libs"><b>›</b> Scikit-learn</div>
-              </li>
-              <li>
-                <h5>XGBoost training</h5>
-                <p>One regressor per cost variable. Gradient-boosted trees beat neural networks on tabular data at this
-                  scale, train faster, and stay interpretable - which mattered for a system finance teams need to trust.
-                </p>
-                <div class="libs"><b>›</b> XGBoost · Scikit-learn</div>
+                <h5>Feature engineering &amp; encoding</h5>
+                <p>I built derived variables from the EDA findings, handled missing values, and encoded the categorical
+                  project attributes so the gradient-boosting model could use them.</p>
+                <div class="libs"><b>›</b> Pandas · Scikit-learn</div>
               </li>
               <li>
                 <h5>Tuning with Optuna</h5>
-                <p>Grid search scales exponentially and wastes trials on dead regions. Optuna's Bayesian-style search
-                  learns from previous trials and prunes bad ones early - better configurations in far fewer runs,
-                  across four separate models.</p>
+                <p>Grid search grows exponentially and wastes trials on dead regions. Optuna learns from earlier trials
+                  and stops bad ones early, so it finds better configurations in far fewer runs.</p>
                 <div class="libs"><b>›</b> Optuna · XGBoost</div>
               </li>
               <li>
-                <h5>Evaluation</h5>
-                <p>R² above 0.75 on held-out data for all four cost variables - the models explain more than three
-                  quarters of the variance in project cost.</p>
-                <div class="libs"><b>›</b> Scikit-learn · Matplotlib</div>
+                <h5>One multivariate model, four outputs</h5>
+                <p>A single XGBoost model predicts material, internal labour, external labour, and other or
+                  miscellaneous costs at the same time. On tabular data at this scale, gradient-boosted trees train
+                  faster than neural networks and stay interpretable. Interpretability matters for a system finance
+                  teams have to trust.</p>
+                <div class="libs"><b>›</b> XGBoost · Scikit-learn</div>
               </li>
               <li>
-                <h5>Integration layer</h5>
-                <p>Trained models served as the bridge between design inputs and the finance system, automating the
-                  end-to-end estimation process.</p>
-                <div class="libs"><b>›</b> FastAPI · Pandas</div>
+                <h5>Evaluation</h5>
+                <p>Held-out R² of 0.75 for material, 0.77 for internal labour, 0.78 for external labour, and 0.78 for
+                  other costs. The model explains more than three quarters of the variance in every component.</p>
+                <div class="libs"><b>›</b> Scikit-learn · Matplotlib · <a href="/gifs/utility-cost.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
               </li>
             </ol>
           </div>
@@ -1376,6 +1591,73 @@
           <summary>
             <div class="proj-top">
               <span class="proj-num">04</span>
+              <span class="proj-name">Survey Intelligence Platform</span>
+              <span class="chip live">shipped</span>
+              <span class="expand"><span></span></span>
+            </div>
+            <p class="proj-desc">
+              Raw survey responses rarely speak for themselves. This platform turns them into visual analytics: click
+              heatmaps for image questions, and a pulse graph that shows how an audience reacts to a video over time.
+              Everything is served through REST APIs.
+            </p>
+            <div class="flow" data-metric="heatmap + pulse" data-metric-label="analytics served over REST">
+              <div class="flow-track">
+                <div class="flow-node"><b>01</b><strong>MongoDB</strong><small>survey responses</small></div>
+                <div class="flow-node"><b>02</b><strong>Beanie ODM</strong><small>retrieval</small></div>
+                <div class="flow-node"><b>03</b><strong>OpenCV</strong><small>click heatmaps</small></div>
+                <div class="flow-node"><b>04</b><strong>Azure Blob</strong><small>image storage</small></div>
+                <div class="flow-node"><b>05</b><strong>Video pulse</strong><small>ratings @ reactions</small></div>
+                <div class="flow-node"><b>06</b><strong>FastAPI</strong><small>analytics APIs</small></div>
+              </div>
+            </div>
+            <div class="tags">
+              <span class="tag">MongoDB</span><span class="tag">Beanie ODM</span><span class="tag">OpenCV</span>
+              <span class="tag">Azure Blob</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span><span
+                class="tag">FastAPI</span>
+            </div>
+          </summary>
+          <div class="proj-body">
+            <ol class="steps">
+              <li>
+                <h5>Data access with Beanie ODM</h5>
+                <p>Survey responses, image click coordinates, and video reaction ratings all live in MongoDB. Beanie
+                  ODM gives each of them a typed document model, which keeps retrieval and processing predictable.</p>
+                <div class="libs"><b>›</b> MongoDB · Beanie ODM · Pydantic</div>
+              </li>
+              <li>
+                <h5>Click heatmaps</h5>
+                <p>For image questions, the platform aggregates every respondent's click coordinates into a density map
+                  and renders it over the original image with OpenCV. Hot regions and dead zones are obvious at a
+                  glance.</p>
+                <div class="libs"><b>›</b> NumPy · OpenCV</div>
+              </li>
+              <li>
+                <h5>Storage in Azure Blob</h5>
+                <p>The generated heatmap images are written to Azure Blob Storage, so the API returns a stable URL
+                  instead of regenerating the image on every request.</p>
+                <div class="libs"><b>›</b> Azure Blob Storage SDK</div>
+              </li>
+              <li>
+                <h5>Video pulse</h5>
+                <p>Respondents react while a video plays. Their ratings are aggregated at each reaction timestamp and
+                  plotted as a line graph, which shows exactly which moments won or lost the audience.</p>
+                <div class="libs"><b>›</b> Pandas · NumPy · Matplotlib</div>
+              </li>
+              <li>
+                <h5>REST API layer</h5>
+                <p>Both the heatmap analytics and the video pulse analytics are exposed as FastAPI endpoints for the
+                  product front end to consume.</p>
+                <div class="libs"><b>›</b> FastAPI · Pydantic · Uvicorn · <a href="/gifs/survey-intelligence.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
+              </li>
+            </ol>
+          </div>
+        </details>
+
+        <!-- 05 -->
+        <details class="proj">
+          <summary>
+            <div class="proj-top">
+              <span class="proj-num">05</span>
               <span class="proj-name">Lightweight CNN for Alzheimer's Classification</span>
               <span class="chip research">M.Tech dissertation</span>
               <span class="expand"><span></span></span>
@@ -1390,6 +1672,16 @@
               deployed
               in low-resource clinical settings.
             </p>
+            <div class="flow" data-metric="98%" data-metric-label="bidirectional cross-dataset accuracy">
+              <div class="flow-track">
+                <div class="flow-node"><b>01</b><strong>MRI datasets</strong><small>2 × Mendeley</small></div>
+                <div class="flow-node"><b>02</b><strong>Split 80:10:10</strong><small>stratified</small></div>
+                <div class="flow-node"><b>03</b><strong>Augment</strong><small>+ SHA-256 dedup</small></div>
+                <div class="flow-node"><b>04</b><strong>3-layer CNN</strong><small>16 → 32 → 64</small></div>
+                <div class="flow-node"><b>05</b><strong>5-fold CV</strong><small>consistency</small></div>
+                <div class="flow-node"><b>06</b><strong>Cross-dataset</strong><small>both directions</small></div>
+              </div>
+            </div>
             <div class="tags">
               <span class="tag">TensorFlow</span><span class="tag">CNN</span><span class="tag">Albumentations</span>
               <span class="tag">OpenCV</span><span class="tag">Scikit-learn</span><span class="tag">SHA-256</span>
@@ -1492,7 +1784,7 @@
                   slices, datasets beyond Mendeley, and an actual clinical deployment to find out what latency and
                   memory really cost.</p>
                   <div class="libs"><b>›</b> <a href="https://github.com/Abhishek6706/Alzheimers_Disease_Prediction"
-      target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">repository ↗</a></div>
+      target="_blank" rel="noopener noreferrer">repository ↗</a> · <a href="/gifs/alzheimers-cnn.gif" target="_blank" rel="noopener">pipeline.gif ↓</a></div>
               </li>
             </ol>
           </div>
@@ -1515,27 +1807,42 @@
         <p class="role-sub">full-time · Generative AI &amp; ML</p>
 
         <div class="sub-proj">
-          <h4>AI-Powered Observability Platform <span style="color:var(--text-faint);font-weight:400;">· Jun 2026 -
+          <h4>ML-Based Delivery Time Estimation <span style="color:var(--text-faint);font-weight:400;">· Aug 2026 -
               present</span></h4>
           <ul>
-            <li>Built a pipeline converting unstructured application logs into structured records for downstream
-              processing.</li>
-            <li>Generated vector embeddings from structured logs and stored them in a vector database for semantic
-              retrieval.</li>
-            <li>Implemented hybrid retrieval combining semantic vector search with keyword-based lookup to surface the
-              most relevant entries per query.</li>
-            <li>Integrated retrieved context with an LLM to produce accurate root-cause explanations engineers can act
-              on.</li>
+            <li>Streamlined delivery data retrieval from PostgreSQL using SQLAlchemy ORM, and identified predictive
+              features through EDA.</li>
+            <li>Developed multivariate XGBoost models that predict three sequential delivery-time components, then
+              add them up into the final delivery-time estimate.</li>
+            <li>Tuned the XGBoost hyperparameters with GridSearchCV to improve the delivery-time estimates.</li>
+            <li>Reached a baseline delivery compliance rate of 73% (orders delivered within the promised timeframe),
+              with predictions served through FastAPI.</li>
           </ul>
         </div>
 
         <div class="sub-proj">
-          <h4>AI-Powered Cost Estimation Tool <span style="color:var(--text-faint);font-weight:400;">· May 2026 - Jun
+          <h4>AI-Powered Observability Platform <span style="color:var(--text-faint);font-weight:400;">· Jun 2026 -
+              Aug 2026</span></h4>
+          <ul>
+            <li>Built a preprocessing pipeline that standardises unstructured application logs for analysis.</li>
+            <li>Stored log embeddings in ChromaDB and implemented hybrid search with a cosine similarity threshold of
+              0.5, so logs are retrieved by relevance.</li>
+            <li>Reranked retrieved documents with cross-encoder/ms-marco-MiniLM-L-6-v2 before LLM root-cause
+              generation, to put the most relevant context first.</li>
+            <li>Evaluated the chatbot with the RAG Triad: 92% context relevance, 95% groundedness, and 92% answer
+              relevance.</li>
+          </ul>
+        </div>
+
+        <div class="sub-proj">
+          <h4>ML-Based Utility Cost Estimation <span style="color:var(--text-faint);font-weight:400;">· May 2026 - Jun
               2026</span></h4>
           <ul>
-            <li>Ran EDA to derive insight and align features with cost prediction objectives.</li>
-            <li>Engineered features and encoded categoricals, then trained an XGBoost regressor tuned with Optuna.</li>
-            <li>Achieved R² above 0.75 across all four cost output variables.</li>
+            <li>Identified the key cost drivers through EDA to align input features with the cost prediction
+              objectives.</li>
+            <li>Engineered features, encoded categorical variables, and tuned XGBoost hyperparameters with Optuna.</li>
+            <li>Developed a multivariate XGBoost model that predicts four cost components at once. R² scores: 0.75
+              (material), 0.77 (internal labour), 0.78 (external labour), and 0.78 (other).</li>
           </ul>
         </div>
       </div>
@@ -1546,16 +1853,15 @@
           <span class="role-org">Kellton Tech Solutions</span>
           <span class="role-dates">Oct 2025 - Apr 2026</span>
         </div>
-        <p class="role-sub">AI-Powered Survey Analytics Platform · Nov 2025 - Mar 2026</p>
+        <p class="role-sub">Survey Intelligence Platform · Nov 2025 - Mar 2026</p>
         <ul>
-          <li>Designed and deployed a production-grade real-time analytics pipeline with MongoDB integration and
-            continuous learning on incoming survey data.</li>
-          <li>Performed regression and correlation analysis across 10+ question types, plus heatmap and pulse-based
-            visualisations.</li>
-          <li>Integrated NLP sentiment analysis and generative AI to explain analytical results in plain language for
-            non-technical stakeholders.</li>
-          <li>Built the FastAPI REST layer covering regression, correlation, heatmap, sentiment, and video analytics
-            modules.</li>
+          <li>Streamlined access to survey data by integrating MongoDB with Beanie ODM for response retrieval and
+            processing.</li>
+          <li>Visualised survey click intensity by generating OpenCV heatmap images and storing them in Azure Blob.
+          </li>
+          <li>Summarised audience reactions to videos by aggregating ratings at each reaction timestamp and plotting
+            them as a line graph.</li>
+          <li>Exposed the heatmap and video pulse analytics through REST APIs built with FastAPI.</li>
         </ul>
       </div>
 
@@ -1571,7 +1877,7 @@
       <div class="role">
         <div class="role-head">
           <span class="role-title">B.Tech, Electronics Engineering</span>
-          <span class="role-org">Rajkiya Engineering College, Sonebhadra</span>
+          <span class="role-org">Rajkiya Engineering College, Sonbhadra</span>
           <span class="role-dates">2020 - 2024</span>
         </div>
         <p class="role-sub">CGPA 7.88</p>
@@ -1586,19 +1892,16 @@
       <div class="stack-row">
         <div class="stack-key">languages</div>
         <div class="tags">
-          <span class="tag">Python</span><span class="tag">SQL</span>
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">REST APIs</span>
         </div>
       </div>
       <div class="stack-row">
         <div class="stack-key">generative ai</div>
         <div class="tags">
-          <span class="tag">RAG</span><span class="tag">Hybrid retrieval</span><span class="tag">Prompt
-            engineering</span>
-          <span class="tag">Structured outputs</span><span class="tag">Tool calling</span><span class="tag">Context
-            engineering</span>
-          <span class="tag">Prompt compression</span><span class="tag">Explainable AI</span><span
-            class="tag">LangChain</span>
-          <span class="tag">Azure OpenAI</span><span class="tag">Hugging Face</span>
+          <span class="tag">RAG</span><span class="tag">RAG evaluation</span><span class="tag">Hybrid retrieval</span>
+          <span class="tag">Reranking</span><span class="tag">LLM integration</span><span class="tag">Tool
+            calling</span>
+          <span class="tag">AI agents</span><span class="tag">LangChain</span><span class="tag">LangGraph</span>
         </div>
       </div>
       <div class="stack-row">
@@ -1607,8 +1910,9 @@
           <span class="tag">Regression</span><span class="tag">Classification</span><span class="tag">Feature
             engineering</span>
           <span class="tag">Model evaluation</span><span class="tag">Hyperparameter tuning</span><span
-            class="tag">XGBoost</span>
-          <span class="tag">Optuna</span><span class="tag">Scikit-learn</span>
+            class="tag">Cross-validation</span>
+          <span class="tag">EDA</span><span class="tag">ETL pipelines</span><span class="tag">XGBoost</span><span
+            class="tag">Optuna</span><span class="tag">Scikit-learn</span>
         </div>
       </div>
       <div class="stack-row">
@@ -1616,31 +1920,43 @@
         <div class="tags">
           <span class="tag">Neural networks</span><span class="tag">CNNs</span><span class="tag">Transfer
             learning</span>
-          <span class="tag">Parameter-efficient design</span><span class="tag">TensorFlow</span><span
-            class="tag">OpenCV</span>
+          <span class="tag">Parameter-efficient design</span><span class="tag">Model optimisation</span><span
+            class="tag">TensorFlow</span>
+          <span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">OpenCV</span>
         </div>
       </div>
       <div class="stack-row">
         <div class="stack-key">nlp</div>
         <div class="tags">
-          <span class="tag">Text preprocessing</span><span class="tag">Sentiment analysis</span><span
+          <span class="tag">Text preprocessing</span><span class="tag">Tokenization</span><span class="tag">Text
+            embeddings</span>
+          <span class="tag">Sentiment analysis</span><span class="tag">Sentence Transformers</span><span
             class="tag">spaCy</span>
         </div>
       </div>
       <div class="stack-row">
         <div class="stack-key">backend &amp; data</div>
         <div class="tags">
-          <span class="tag">FastAPI</span><span class="tag">Pydantic</span><span class="tag">Uvicorn</span>
-          <span class="tag">MongoDB</span><span class="tag">PyMongo</span><span class="tag">Vector databases</span>
-          <span class="tag">Pandas</span><span class="tag">NumPy</span>
+          <span class="tag">FastAPI</span><span class="tag">Pydantic</span><span class="tag">PostgreSQL</span>
+          <span class="tag">SQLAlchemy</span><span class="tag">MongoDB</span><span class="tag">Beanie ODM</span>
+          <span class="tag">ChromaDB</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+          <span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
         </div>
       </div>
       <div class="stack-row">
-        <div class="stack-key">tools</div>
+        <div class="stack-key">cloud &amp; ai platforms</div>
         <div class="tags">
-          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Linux</span>
-          <span class="tag">Microsoft Azure</span><span class="tag">Matplotlib</span><span
-            class="tag">Seaborn</span><span class="tag">Plotly</span>
+          <span class="tag">Microsoft Azure</span><span class="tag">Azure Blob Storage</span><span class="tag">Azure
+            OpenAI</span>
+          <span class="tag">OpenAI API</span><span class="tag">Google Gemini API</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-key">devops &amp; tools</div>
+        <div class="tags">
+          <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">GitHub Actions</span>
+          <span class="tag">CI/CD</span><span class="tag">Docker</span><span class="tag">Linux</span><span
+            class="tag">Apache Kafka</span>
         </div>
       </div>
     </section>
@@ -1672,15 +1988,15 @@
               <span class="meta">selected from 30,000 applicants nationwide</span>
             </li>
             <li>
-              Generative AI Certification - Oracle
+              <a href="https://drive.google.com/file/d/1AjK7cpg_RA3tFZR5Zad_1Y6jEhzq8714/view" target="_blank" rel="noopener noreferrer">Generative AI Certification - Oracle ↗</a>
               <span class="meta">Sep 2025</span>
             </li>
             <li>
-              AI Foundations Associate - Oracle
+              <a href="https://drive.google.com/file/d/1zRtEJ1owcrECkaLoAuxybisoQ2c8ewMM/view" target="_blank" rel="noopener noreferrer">AI Foundations Associate - Oracle ↗</a>
               <span class="meta">Sep 2025</span>
             </li>
             <li>
-              Data Science using Python - Prutor, IIT Kanpur
+              <a href="https://drive.google.com/file/d/1z8n5ezdDeMN_tHlV2Nv1RvWQ1U8rUyfJ/view" target="_blank" rel="noopener noreferrer">Data Science using Python - Prutor, IIT Kanpur ↗</a>
               <span class="meta">Oct 2022</span>
             </li>
           </ul>
@@ -1784,6 +2100,69 @@
       });
 
       list.addEventListener('click', close);
+
+      // animated project pipelines
+      var STEP_MS = 700, HOLD_MS = 1800;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      Array.prototype.forEach.call(document.querySelectorAll('.flow'), function (flow) {
+        var track = flow.querySelector('.flow-track');
+        var nodes = Array.prototype.slice.call(track.querySelectorAll('.flow-node'));
+        var links = [];
+        nodes.slice(0, -1).forEach(function (n) {
+          var l = document.createElement('span');
+          l.className = 'flow-link';
+          l.style.setProperty('--step', STEP_MS + 'ms');
+          n.after(l);
+          links.push(l);
+        });
+
+        var foot = document.createElement('div');
+        foot.className = 'flow-foot';
+        foot.innerHTML = '<span class="flow-bar"><i></i></span><span class="flow-status"></span>';
+        flow.appendChild(foot);
+        var bar = foot.querySelector('i');
+        var status = foot.querySelector('.flow-status');
+        var metric = '<em>' + flow.dataset.metric + '</em> ' + flow.dataset.metricLabel;
+
+        function finish() {
+          nodes.forEach(function (n) { n.classList.remove('is-active'); n.classList.add('is-done'); });
+          links.forEach(function (l) { l.classList.remove('is-moving'); l.classList.add('is-done'); });
+          bar.style.width = '100%';
+          status.innerHTML = metric;
+        }
+
+        if (reduce) { finish(); return; }
+
+        var step = 0, timer = null;
+        function render() {
+          if (step >= nodes.length) {
+            finish();
+            step = -1;
+            timer = setTimeout(tick, HOLD_MS);
+            return;
+          }
+          nodes.forEach(function (n, i) {
+            n.classList.toggle('is-done', i < step);
+            n.classList.toggle('is-active', i === step);
+          });
+          links.forEach(function (l, i) {
+            l.classList.toggle('is-done', i < step);
+            l.classList.remove('is-moving');
+            if (i === step) { void l.offsetWidth; l.classList.add('is-moving'); }
+          });
+          bar.style.width = (step / nodes.length * 100) + '%';
+          status.textContent = '> stage ' + (step + 1) + '/' + nodes.length + ' · ' +
+            nodes[step].querySelector('strong').textContent;
+          timer = setTimeout(tick, STEP_MS);
+        }
+        function tick() { step++; render(); }
+
+        new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { if (!timer) { step = 0; render(); } }
+          else { clearTimeout(timer); timer = null; }
+        }, { threshold: .35 }).observe(flow);
+      });
     })();
   </script>
 
